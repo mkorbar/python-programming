@@ -64,10 +64,13 @@
 
 import random
 
+attempts = 0
 secret = random.randint(1, 30)
 
 while True:
     guess = int(input("Vpiši skrito število: "))
+    attempts += 1
+    # attempts = attempts + 1
 
     if guess > secret:
         print("Ne, poskusi z nižjim številom.")
@@ -75,6 +78,9 @@ while True:
         print("Ups, to ne bo pravilno, poskusi z višjim številom.")
     else:
         print("Čestitke, uganil si pravilno število!")
+        print(f"Porabil si {attempts} poskusov.")
+        with open("high-score.txt", "w") as attempts_file:
+            attempts_file.write(str(attempts))
         break
 
 print("Igra končana!")
