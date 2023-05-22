@@ -8,8 +8,7 @@
 # else:
 #     print("Ups, to ne bo pravilno. Skrito število je " + str(secret))
 #
-
-
+import json
 # # while zanka
 # secret = 4
 # guess = None
@@ -67,6 +66,10 @@ import random
 attempts = 0
 secret = random.randint(1, 30)
 
+# read the high scores
+with open("high-score.json", "r") as attempts_file:
+    score_list = json.loads(attempts_file.read())
+
 while True:
     guess = int(input("Vpiši skrito število: "))
     attempts += 1
@@ -79,8 +82,9 @@ while True:
     else:
         print("Čestitke, uganil si pravilno število!")
         print(f"Porabil si {attempts} poskusov.")
-        with open("high-score.txt", "w") as attempts_file:
-            attempts_file.write(str(attempts))
+        score_list.append(attempts)
+        with open("high-score.json", "w") as attempts_file:
+            attempts_file.write(json.dumps(score_list))
         break
 
 print("Igra končana!")
