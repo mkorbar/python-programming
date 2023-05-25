@@ -1,1 +1,11 @@
-[5, 5, 11]
+[
+  {
+    "high_score": 5,
+    "username": "Matej",
+    "date_of_game": "2023-05-01",
+    "unsuccessfully_guesses" : [1,2,3,4,5]
+  }
+  5,
+  11,
+  2
+]
